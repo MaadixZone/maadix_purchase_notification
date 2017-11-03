@@ -1,0 +1,14 @@
+{
+  "name": "drupal/maadix_purchase_notification",
+  "type": "drupal-module",
+  "description": "Alters the notifications when a new purchase is made.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/maadix_purchase_notification",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/maadix_purchase_notification",
+    "source": "http://cgit.drupalcode.org/maadix_purchase_notification"
+  },
+  "require": { }
+}

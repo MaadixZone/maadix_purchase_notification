@@ -1,0 +1,7 @@
+name: maadix purchase notification
+type: module
+description: Alters the notifications when a new purchase is made.
+core: 8.x
+package: Custom
+dependencies:
+  - commerce_order

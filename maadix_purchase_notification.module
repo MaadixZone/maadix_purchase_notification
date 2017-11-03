@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Contains maadix_purchase_notification.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function maadix_purchase_notification_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the maadix_purchase_notification module.
+    case 'help.page.maadix_purchase_notification':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Alters the notifications when a new purchase is made.') . '</p>';
+      //debug("aa");
+      $route_name;
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_help().
+ */
+function maadix_purchase_notification_mail_alter(&$message) {
+  if ($message['id'] != "commerce_order_receipt" && $message['key'] != 'receipt'){
+    return;
+  }
+  //kint($message);
+  $order_items = $message['params']['order']->getItems();
+  foreach($order_items as $key => $order_item){
+    if ( empty($order_item->expiry->value)){
+      $message['subject'] = t("New order #@number confirmed", ['@number' => $message['params']['order']->id()]);
+    };
+  }
+}
